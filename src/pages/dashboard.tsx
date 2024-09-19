@@ -1,3 +1,4 @@
+// /pages/dashboard.tsx
 import { GetServerSideProps } from "next";
 import { verifyToken } from "../utils/auth";
 import DashboardComponents from "@/components/dashboard/DashboardComponents";
@@ -6,26 +7,25 @@ import SideBar from "@/components/dashboard/SideBar";
 const Dashboard = () => {
   return (
     <div>
-        <SideBar/>
       <DashboardComponents />
     </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const isAuthenticated = verifyToken(context);
+  const decoded = verifyToken(context);
 
-  if (!isAuthenticated) {
+  if (!decoded) {
     return {
       redirect: {
-        destination: "/404",
+        destination: "/login", // Redirect to login page
         permanent: false,
       },
     };
   }
 
   return {
-    props: {},
+    props: { user: decoded }, // Pass decoded user data to the page
   };
 };
 

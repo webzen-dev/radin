@@ -1295,13 +1295,10 @@ footer .social-media a {
 .sidebar .list li:hover a {
   color: rgb(27, 27, 27);
 }
-/* .sidebar .list li:hover{
-  box-shadow: 0px 5px 9px rgba(128, 128, 128, 0.596);
-} */
 
 .ListAdmins {
   padding: 3rem 0;
-  padding-left: 9rem;
+  /* padding-left: 9rem; */
 }
 .ListAdmins .all-admins {
   display: flex;
@@ -1319,7 +1316,6 @@ footer .social-media a {
   width: 80%;
   justify-content: space-between;
   align-items: center;
-  /* background: #0000000e; */
   background: #f1f1f1;
   padding: 20px;
   border-radius: 10px;
@@ -1341,7 +1337,7 @@ footer .social-media a {
   border-radius: 32px 0 0 32px;
   transform: scale(1);
   transform-origin: 50% 50%;
-  transition: transform 0.25s ease-out;
+  transition: transform 400ms ease-out;
 }
 
 .ListAdmins .all-admins .admin:hover::before {
@@ -1371,15 +1367,140 @@ footer .social-media a {
 .ListAdmins .all-admins .admin .user .user-info span:last-child {
   color: gray;
 }
-.ListAdmins .all-admins .admin .date {
-  flex: 1;
-  text-align: end;
-}
-.ListAdmins .all-admins .admin .date span:last-child {
-  color: #240000;
-}
+
 .ListAdmins .all-admins .admin .delete {
   color: #800000;
   font-size: 1.3rem;
   cursor: pointer;
+}
+.confirm-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 9rem);
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(10px);
+  top: 0;
+  right: 0;
+  color: #000;
+  box-shadow: none;
+  font-size: 1rem;
+}
+.confirm-modal .confirm-modal-box {
+  width: 390px;
+  height: 250px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(77, 77, 77, 0.548);
+  align-items: center;
+  animation: ConfirmModal 500ms ease-in-out;
+}
+@keyframes ConfirmModal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.confirm-modal .confirm-modal-box > .title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 10px 0;
+}
+.confirm-modal .confirm-modal-box > .caption {
+  font-weight: 400;
+}
+.confirm-modal .confirm-modal-box > .caption span {
+  font-weight: 600;
+  color: #240000;
+}
+.confirm-modal .confirm-modal-box .warning {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 20px;
+  background: #ffe9d9;
+  border-left: 5px solid #fa703f;
+  gap: 5px;
+}
+.confirm-modal .confirm-modal-box .warning .title {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  color: #771505;
+  gap: 10px;
+  text-transform: capitalize;
+}
+.confirm-modal .confirm-modal-box .warning .caption {
+  font-size: 0.9rem;
+  color: #bc4c2e;
+}
+.confirm-modal .confirm-modal-box .buttons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.confirm-modal .confirm-modal-box .buttons button {
+  width: calc(50% - 10px);
+  height: 35px;
+  background: #000;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.confirm-modal .confirm-modal-box .buttons button:last-child {
+  color: #771505;
+  border: 2px solid #771505;
+  background: none;
+}
+.dashboard-content {
+  padding-left: 9rem;
+}
+.profile-page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.profile-page .profile-box{
+  width: 350px;
+  height: 350px;
+  background: #0000001f;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.profile-page .profile-box .profile{
+  font-size: 3rem;
+  
+}
+
+
+.ProjectsHeroSection{
+  width: 100%;
+  color: #240000;
+  height: 100vh;
+/* background: #000; */
+  padding-top: 9rem;
 }

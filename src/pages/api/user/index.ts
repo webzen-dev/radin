@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // GET method
   if (req.method === "GET") {
     const { id } = req.query;
 
@@ -43,6 +44,7 @@ export default async function handler(
     }
   }
 
+  // POST method
   if (req.method === "POST") {
     const { username, email, password, role } = req.body;
 
@@ -72,8 +74,40 @@ export default async function handler(
       console.error("Error creating user:", error);
       return res.status(500).json({ message: "Internal Server Error", error });
     }
-  } else {
-    res.setHeader("Allow", ["GET", "POST"]);
+  }
+
+  // DELETE method
+  if (req.method === "DELETE") {
+    const { id } = req.query;
+
+    if (!id || isNaN(Number(id))) {
+      return res.status(400).json({ message: "Invalid or missing ID" });
+    }
+
+    try {
+      const userId = Number(id);
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      await prisma.user.delete({
+        where: { id: userId },
+      });
+
+      return res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
+  else {
+    res.setHeader("Allow", ["GET", "POST", "DELETE"]);
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
+

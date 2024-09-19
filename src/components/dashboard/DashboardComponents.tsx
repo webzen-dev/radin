@@ -1,10 +1,11 @@
-import React, { FC } from "react";
+// /components/dashboard/DashboardComponents.tsx
+import React from "react";
 import SideBar from "./SideBar";
 
 const DashboardComponents = ({ children }: any) => {
   return (
     <div className="dashboard-layout">
-      <SideBar />
+      <SideBar/>
       <main className="dashboard-content">{children}</main>
     </div>
   );

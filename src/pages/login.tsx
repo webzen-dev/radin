@@ -18,13 +18,16 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
+  
     try {
       const response = await axios.post("/api/user/login", { email, password });
-
+  
       if (response.status === 200) {
-        localStorage.setItem("isLoggedIn", "true"); // ذخیره وضعیت لاگین
-        router.replace("/dashboard"); // هدایت به داشبورد
+        const userData = response.data;
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("user", JSON.stringify(userData));
+        console.log("User data stored in localStorage:", userData); 
+        router.replace("/dashboard");
       } else {
         setError("Login failed. Please check your credentials.");
       }
@@ -33,7 +36,8 @@ const Login = () => {
       console.error(err);
     }
   };
-
+  
+  
 
   return (
     <>
