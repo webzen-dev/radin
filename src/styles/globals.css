@@ -37,7 +37,6 @@ a.active {
 
 body {
   scroll-behavior: smooth;
-  /* background: #000; */
 }
 header {
   display: flex;
@@ -106,7 +105,8 @@ header nav .cta-box a {
 }
 header nav .menu-items li.active a {
   font-size: 1.3rem;
-  color: #000000;
+  color: #8a8a8a;
+  letter-spacing: 2px;
 }
 header nav .cta-box a svg {
   font-size: 1.3rem;
@@ -1530,7 +1530,7 @@ footer .social-media a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #240000, #24000092);
+  background: linear-gradient(to bottom, #240000, #2400005d);
   z-index: 1;
   opacity: 0.9;
 }
@@ -1607,6 +1607,8 @@ footer .social-media a {
   margin: 0 auto;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 .projects-page .project-list .project-item {
   width: 220px;
@@ -1641,11 +1643,9 @@ footer .social-media a {
   height: 30px;
   background: #240000;
   color: #f1f1f1;
-  /* width: 90%; */
   width: 100%;
   display: flex;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  /* align-self: flex-end; */
 }

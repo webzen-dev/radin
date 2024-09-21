@@ -10,7 +10,6 @@ import { useState } from "react";
 import SearchBox from "./modal/SearchBox";
 import { useRouter } from "next/router";
 import { IoMdClose } from "react-icons/io";
-import { TbMenuDeep } from "react-icons/tb";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 
 const Header = () => {

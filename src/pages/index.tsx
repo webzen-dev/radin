@@ -6,7 +6,7 @@ import ServiceIndex from "@/components/home/ServiceIndex";
 import ProjectAndServices from "@/components/home/ProjectAndServices";
 import ContactUsIndex from "@/components/home/ContactUsIndex";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import HeroSection from "@/components/home/HeroSection";
 
 export default function Home() {

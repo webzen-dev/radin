@@ -12,13 +12,12 @@ const ProjectList = () => {
       console.log(error);
     }
   };
-  useEffect(()=>{
-    fetchProjectData()
-  },[])
+  useEffect(() => {
+    fetchProjectData();
+  }, []);
   return (
     <div className="project-list">
       {/* project item */}
-
       {data.map((project) => (
         <div className="project-item" key={project.id}>
           <img src={project.image} alt={`project image ${project.name}`} />

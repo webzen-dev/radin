@@ -1,6 +1,6 @@
 // src/pages/_app.tsx
 
-import "@/styles/globals.css";
+import "../styles/globals.css"
 import ProgressBar from "@/components/ProgressBar";
 import { AuthProvider } from "@/context/AuthContext";
 type AppProps = {
