@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
+  /* user-select: none; */
   list-style: none;
   text-decoration: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -766,6 +766,8 @@ header .search-box {
 .ContactUsIndex .box:first-child form input,
 .ContactUsIndex .box:first-child form textarea {
   height: 50px;
+  caret-color: rgb(65, 0, 0);
+
   width: 100%;
   border: none;
   outline: none;
@@ -865,8 +867,10 @@ footer ul li:first-child {
   padding-left: 0;
   border: none;
 }
-footer ul li a {
+footer ul li a,
+footer ul li span {
   color: #fff;
+  cursor: pointer;
 }
 footer ul li a.active {
   color: var(--wine);
@@ -1060,17 +1064,31 @@ footer .social-media a {
     border: none;
   }
 }
+#closeLogin {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  color: red;
+  font-size: 2rem;
+}
 .login-page {
   width: 100%;
   height: 100vh;
-  background: #dddddd;
+  background: #0000009f;
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 122;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  right: 0;
   align-items: center;
   justify-content: center;
 }
 .login-page .box {
   width: 300px;
-  height: 400px;
+  height: 420px;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -1079,6 +1097,7 @@ footer .social-media a {
   justify-content: space-between;
   gap: 20px;
 }
+
 .login-page .box .login-header {
   display: flex;
   flex-direction: column;
@@ -1168,6 +1187,11 @@ footer .social-media a {
   letter-spacing: 1px;
   text-transform: capitalize;
   cursor: pointer;
+}
+.login-page .box form button:last-child {
+  background: none;
+  color: #240000;
+  border: 2px solid #240000;
 }
 .login-page .box form .password {
   z-index: 4;
@@ -1481,7 +1505,7 @@ footer .social-media a {
 }
 .profile-page .profile-box {
   width: 350px;
-  height: 350px;
+  height: 150px;
   background: #0000001f;
   border-radius: 20px;
   box-shadow: 0px 0px 10px gray;
@@ -1494,7 +1518,12 @@ footer .social-media a {
 .profile-page .profile-box .profile {
   font-size: 3rem;
 }
-
+.profile-page .profile-box .profile-info{
+  display: flex;
+  flex-direction: column
+  ;
+  gap: 10px;
+}
 .ProjectsHeroSection {
   width: 100%;
   color: #240000;
@@ -1606,17 +1635,19 @@ footer .social-media a {
   width: 90%;
   margin: 0 auto;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
   margin-bottom: 100px;
+  min-height: calc(100vh - 360px);
 }
 .projects-page .project-list .project-item {
+  padding: 10px;
   width: 220px;
   height: 270px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background: #24000033;
+  border: 0.5px solid rgba(128, 128, 128, 0.267);
 }
 
 .projects-page .project-list .project-item img {
@@ -1638,6 +1669,7 @@ footer .social-media a {
   gap: 5px;
   flex: 1;
 }
+.dashboard-content .Projects form button,
 .projects-page .project-list .project-item button {
   border: none;
   height: 30px;
@@ -1648,4 +1680,339 @@ footer .social-media a {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
+}
+.projects-page .project-details {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(1px);
+  box-shadow: inset 0 0 1000px rgb(112, 112, 112);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 222;
+}
+.projects-page .project-details > .box {
+  box-shadow: 0 10px 10px gray;
+  border-radius: 4px;
+  display: flex;
+  height: 300px;
+  backdrop-filter: blur(12px);
+  align-items: center;
+  width: 600px;
+}
+.projects-page .project-details > .box img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.projects-page .project-details > .box .box {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  height: 90%;
+  flex-direction: column;
+}
+.AddAdmin {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.AddAdmin form {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.AddAdmin form .input-box {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  border-bottom: 2px solid gray;
+  gap: 10px;
+  align-items: center;
+}
+.AddAdmin form .input-box input {
+  height: 100%;
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+}
+.AddAdmin form .input-box svg {
+  color: #525252;
+}
+.AddAdmin form button {
+  background: #240000;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.dashboard-content .Projects {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-content .Projects form {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dashboard-content .Projects form .input-box {
+  width: 100%;
+  align-items: center;
+  height: 40px;
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid #24000067;
+}
+#fileImageLabel {
+  text-decoration: underline;
+
+  color: #24000044;
+}
+#fileImageInput {
+  display: none;
+}
+.dashboard-content .Projects form .input-box input,
+.dashboard-content .Projects form .input-box textarea {
+  resize: none;
+  width: 100%;
+
+  border: none;
+  background: none;
+  outline: none;
+  display: flex;
+
+  height: 100%;
+}
+.dashboard-content .Projects form .input-box textarea {
+  height: 40px;
+}
+.dashboard-content .project-header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  padding: 0 30px;
+  align-items: center;
+  border-bottom: 2px solid #24000056;
+  gap: 20px;
+}
+.dashboard-content .project-header .item {
+  border-right: 2px solid #240000;
+  color: black;
+  cursor: pointer;
+  padding-right: 20px;
+}
+.dashboard-content .project-header .active {
+  letter-spacing: 2px;
+  color: red;
+  background: #000;
+}
+
+.dashboard-content .list-project {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.dashboard-content .list-project .list-project-box {
+  width: 80%;
+  max-height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+  gap: 20px;
+}
+.dashboard-content .list-project .list-project-box .project-item {
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px;
+  height: 210px;
+  border-radius: 4 px;
+  border: 2px solid #8d8d8d46;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dashboard-content .list-project .list-project-box .project-item .description {
+  max-height: 90px;
+  overflow-y: auto;
+}
+.dashboard-content .list-project .list-project-box .project-item img {
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dashboard-content .list-project .list-project-box .project-item > .box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 90%;
+}
+.dashboard-content .list-project .list-project-box .project-item > .box .box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dashboard-content .list-project .list-project-box .project-item > button {
+  border: none;
+  height: 30px;
+  outline: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  background: #240000;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.dashboard-content .list-project .list-project-box .project-item > button svg {
+  font-size: 1.3rem;
+}
+.check-captcha {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #00000088;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  align-items: center;
+  z-index: 322;
+}
+.modal-captcha-bot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 303px;
+}
+.modal-captcha-bot h3 {
+  color: #fff;
+  font-weight: 200;
+}
+
+.modal-captcha-bot .btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.modal-captcha-bot .btns button {
+  width: 50%;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+  border: 2px solid #ffffff8a;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+.modal-captcha-bot .btns button:last-child {
+  background: #00000073;
+  border: none;
+}
+.dashboard-content .Messages {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+.dashboard-content .Messages .messages-box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.dashboard-content .Messages .messages-box .message-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 80px;
+  /* height: auto; */
+  background: #ecececc0;
+  border-radius: 4px;
+  padding: 19.5px;
+  position: relative;
+}
+.dashboard-content .Messages .messages-box  .box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.dashboard-content .Messages .messages-box .message-item .box .one-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboard-content .Messages .messages-box .message-item .box button {
+  width: 65px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+.dashboard-content .Messages .messages-box .message-item .circle {
+  width: 15px;
+  height: 15px;
+  background: #0bb2ff;
+  box-shadow: 0px 0px 10px rgb(140, 242, 255);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+}
+
+.dashboard-content .Messages .messages-box .message-item .show-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+
+
+
+
+
+
+}
+.dashboard-content .Messages .messages-box .email{
+  cursor: pointer;
 }

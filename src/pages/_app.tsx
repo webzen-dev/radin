@@ -1,8 +1,8 @@
 // src/pages/_app.tsx
 
-import "../styles/globals.css"
-import ProgressBar from "@/components/ProgressBar";
-import { AuthProvider } from "@/context/AuthContext";
+import "../styles/globals.css";
+import ProgressBar from "../components/ProgressBar";
+import { ProjectProvider } from "../context/ProjectContext";
 type AppProps = {
   Component: React.ElementType;
   pageProps: any;
@@ -10,10 +10,10 @@ type AppProps = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthProvider>
+    <ProjectProvider>
       <ProgressBar />
       <Component {...pageProps} />
-    </AuthProvider>
+    </ProjectProvider>
   );
 }
 

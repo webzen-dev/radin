@@ -4,7 +4,8 @@ import { FaAngleUp, FaTwitter } from "react-icons/fa";
 import { GrLinkedinOption } from "react-icons/gr";
 import { LiaFacebookF } from "react-icons/lia";
 import { PiInstagramLogo } from "react-icons/pi";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import Login from "../pages/login";
 
 const Footer = () => {
   const router = useRouter();
@@ -16,11 +17,25 @@ const Footer = () => {
       behavior: 'smooth'
     });
   }, []);
+  
+  const [openLogin, setOpenLogin] = useState(false);
+  
+  const handleLoginClick = () => {
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+    if (token) {
+      // اگر توکن وجود دارد، به داشبورد هدایت کنید
+      router.push('/dashboard');
+    } else {
+      // در غیر این صورت، مودال ورود را باز کنید
+      setOpenLogin(true);
+    }
+  };
 
   return (
     <footer>
+      {openLogin && <Login setOpenLogin={setOpenLogin} />}
       <div id="up" onClick={scrollToTop}>
-        <span> <FaAngleUp /></span>
+        <span><FaAngleUp /></span>
       </div>
       <ul>
         <li className={isActive("/") ? "active" : ""}>
@@ -32,8 +47,8 @@ const Footer = () => {
         <li className={isActive("/aboutUs") ? "active" : ""}>
           <Link href="/aboutUs">About Us</Link>
         </li>
-        <li className={isActive("/contactUs") ? "active" : ""}>
-          <Link href="/login">Login For Admin</Link>
+        <li onClick={handleLoginClick}>
+          <span>Login For Admin</span>
         </li>
       </ul>
       <div className="social-media">
@@ -50,7 +65,6 @@ const Footer = () => {
           <LiaFacebookF />
         </a>
       </div>
-
       <div className="about_developer">
         <Link href={"developers"}>About developers</Link>
       </div>

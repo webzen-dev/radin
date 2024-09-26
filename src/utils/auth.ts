@@ -9,10 +9,10 @@ export const verifyToken = (context: GetServerSidePropsContext) => {
   if (token) {
     try {
       const decoded = jwt.verify(token, JWT_SECRET);
-      return decoded; // Return decoded token data if valid
+      return decoded; 
     } catch (error) {
       console.error('Token verification failed:', error);
-      return null; // Return null if token is invalid
+      return null
     }
   }
   return null;

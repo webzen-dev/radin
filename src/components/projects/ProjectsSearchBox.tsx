@@ -1,21 +1,32 @@
 import { MdOutlineSearch } from "react-icons/md";
+import { useContext } from "react";
+import { ProjectContext } from "../../context/ProjectContext";
 
 const ProjectsSearchBox = () => {
+  const { setSearchTerm, projects } = useContext(ProjectContext);
+
+  const uniqueBrands = Array.from(new Set(projects.map((project) => project.brand)));
+
   return (
     <div className="search-box">
       <div className="search-input">
         <MdOutlineSearch />
-        <input type="text" placeholder="Search brand , project , ..." />
+        <input
+          type="text"
+          placeholder="Search brand, project, etc..."
+          onChange={(e) => setSearchTerm(e.target.value)} 
+        />
       </div>
+
       <div className="box">
-        <span>Brands : </span>
+        <span>Brands: </span>
         <div className="brands">
-          <span>brand 1</span>
-          <span>brand 2</span>
-          <span>brand 3</span>
-          <span>brand 4</span>
-          <span>brand 5</span>
-          <span>brand 6</span>
+          <span onClick={()=>setSearchTerm("")}>All</span>
+          {uniqueBrands.map((brand, index) => (
+            <span key={index} onClick={() => setSearchTerm(brand)}>
+              {brand}
+            </span>
+          ))}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import brand from "@/public/ret.png";
+import brand from "../public/ret.png"
 import { MdAddIcCall, MdOutlineEmail, MdOutlineSearch } from "react-icons/md";
 import { PiInstagramLogo } from "react-icons/pi";
 import { GrLinkedinOption } from "react-icons/gr";

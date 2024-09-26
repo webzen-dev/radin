@@ -22,14 +22,12 @@ model User {
   email    String    @unique
   password String
   role     String    @default("USER")
-  messages Message[]
 }
-
 model Message {
   id        Int      @id @default(autoincrement())
   content   String
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
   username  String
-  User      User     @relation(fields: [username], references: [username])
+  email     String
 }

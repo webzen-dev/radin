@@ -1,14 +1,15 @@
 // pages/dashboard/[...slug].tsx
+import { GetServerSideProps } from 'next';
+import { verifyToken } from '../../utils/auth';
 import { useRouter } from 'next/router';
 import Profile from '../../components/dashboard/Profile';
 import ListAdmins from '../../components/dashboard/ListAdmins';
 import AddAdmin from '../../components/dashboard/AddAdmin';
 import Projects from '../../components/dashboard/Projects';
 import Messages from '../../components/dashboard/Messages';
-import withAuth from '@/components/dashboard/withAuth';
-import DashboardComponents from '@/components/dashboard/DashboardComponents';
+import DashboardComponents from '../../components/dashboard/DashboardComponents';
 
-const DashboardRouting = () => {
+const DashboardRouting = ({ user }) => {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -36,4 +37,21 @@ const DashboardRouting = () => {
   );
 };
 
-export default withAuth(DashboardRouting);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const decoded = verifyToken(context);
+
+  if (!decoded) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user: decoded },
+  };
+};
+
+export default DashboardRouting;

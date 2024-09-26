@@ -1,21 +1,21 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+// import { useEffect } from "react";
+// import { useRouter } from "next/router";
 
-const withAuth = (WrappedComponent: React.FC) => {
-  const AuthHOC = (props: any) => {
-    const router = useRouter();
+// const withAuth = (WrappedComponent: React.FC) => {
+//   const AuthHOC = (props: any) => {
+//     const router = useRouter();
 
-    useEffect(() => {
-      const isLoggedIn = localStorage.getItem("isLoggedIn");
-      if (!isLoggedIn) {
-        router.push("/404"); 
-      }
-    }, [router]);
+//     useEffect(() => {
+//       const isLoggedIn = localStorage.getItem("isLoggedIn");
+//       if (!isLoggedIn) {
+//         router.push("/404"); 
+//       }
+//     }, [router]);
 
-    return <WrappedComponent {...props} />;
-  };
+//     return <WrappedComponent {...props} />;
+//   };
 
-  return AuthHOC;
-};
+//   return AuthHOC;
+// };
 
-export default withAuth;
+// export default withAuth;

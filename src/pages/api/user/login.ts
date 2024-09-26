@@ -1,4 +1,4 @@
-// pages/api/user/loginm
+// pages/api/user/loginm.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
@@ -15,9 +15,7 @@ export default async function handler(
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({ message: "Email and password are required" });
+      return res.status(400).json({ message: "Email and password are required" });
     }
 
     try {
@@ -49,8 +47,6 @@ export default async function handler(
       return res.status(500).json({ message: "Internal server error" });
     }
   } else {
-    return res
-      .status(405)
-      .json({ message: `Method ${req.method} not allowed` });
+    return res.status(405).json({ message: `Method ${req.method} not allowed` });
   }
 }
