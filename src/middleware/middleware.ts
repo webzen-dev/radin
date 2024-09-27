@@ -7,17 +7,17 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get('token') || req.headers.get('Authorization')?.replace('Bearer ', '');
 
   if (!token) {
-    return NextResponse.redirect(new URL('/404', req.url)); // اینجا را بررسی کنید
+    return NextResponse.redirect(new URL('/404', req.url)); 
   }
 
   try {
     jwt.verify(token, JWT_SECRET);
-    return NextResponse.next(); // اگر توکن معتبر باشد
+    return NextResponse.next(); 
   } catch (err) {
-    return NextResponse.redirect(new URL('/404', req.url)); // اینجا را هم بررسی کنید
+    return NextResponse.redirect(new URL('/404', req.url));
   }
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'], // اینجا باید به درستی تنظیم شده باشد
+  matcher: ['/dashboard/:path*'], 
 };

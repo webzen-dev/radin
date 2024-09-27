@@ -1,5 +1,5 @@
 import { FC } from "react";
-import bg from "@/public/images/IndustryPride.jpg";
+import bg from "../../public/images/IndustryPride.jpg";
 const IndustryPride: FC = () => {
   return (
     <div

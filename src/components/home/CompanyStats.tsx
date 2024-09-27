@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { TiWorldOutline } from "react-icons/ti";
-import bg from "@/public/images/AboutTheCompany.jpg";
+import bg from "../../public/images/AboutTheCompany.jpg";
 const CompanyStats: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const statsRef = useRef<HTMLDivElement | null>(null);

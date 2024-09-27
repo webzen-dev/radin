@@ -1322,7 +1322,6 @@ footer .social-media a {
 
 .ListAdmins {
   padding: 3rem 0;
-  /* padding-left: 9rem; */
 }
 .ListAdmins .all-admins {
   display: flex;
@@ -1496,6 +1495,7 @@ footer .social-media a {
 .dashboard-content {
   padding-left: 9rem;
 }
+
 .profile-page {
   display: flex;
   width: 100%;
@@ -1518,10 +1518,9 @@ footer .social-media a {
 .profile-page .profile-box .profile {
   font-size: 3rem;
 }
-.profile-page .profile-box .profile-info{
+.profile-page .profile-box .profile-info {
   display: flex;
-  flex-direction: column
-  ;
+  flex-direction: column;
   gap: 10px;
 }
 .ProjectsHeroSection {
@@ -1954,8 +1953,9 @@ footer .social-media a {
   width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-height: 90vh;
+  gap: 20px;
+  padding: 0 20px;
+  max-height: calc(80vh - 3.3rem);
   overflow-y: auto;
 }
 
@@ -1965,13 +1965,12 @@ footer .social-media a {
   flex-direction: column;
   gap: 10px;
   min-height: 80px;
-  /* height: auto; */
   background: #ecececc0;
   border-radius: 4px;
   padding: 19.5px;
   position: relative;
 }
-.dashboard-content .Messages .messages-box  .box {
+.dashboard-content .Messages .messages-box .box {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1983,36 +1982,267 @@ footer .social-media a {
   gap: 5px;
 }
 .dashboard-content .Messages .messages-box .message-item .box button {
-  width: 65px;
   height: 25px;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   gap: 5px;
+  border: none;
   justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #d6d6d6;
+}
+.dashboard-content
+  .Messages
+  .messages-box
+  .message-item
+  .box
+  button:last-child {
+  border: 1px solid red;
+  background: none;
+  color: red;
 }
 .dashboard-content .Messages .messages-box .message-item .circle {
-  width: 15px;
-  height: 15px;
-  background: #0bb2ff;
+  width: 10px;
+  height: 10px;
+  background: #00aeff;
   box-shadow: 0px 0px 10px rgb(140, 242, 255);
   position: absolute;
   top: 5px;
   right: 5px;
   border-radius: 50%;
+  /* opacity: 0.5;   */
 }
 
 .dashboard-content .Messages .messages-box .message-item .show-message {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.dashboard-content .Messages .messages-box .email {
+  cursor: pointer;
+}
+.isReadFalse {
+  border: 1px solid #0bb2ff88;
+  background: #8a8a8a3b;
+}
+.dashboard-content .Messages .pagination {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.dashboard-content .Messages .pagination button {
+  width: 70px;
+  border: none;
+  background: #240000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.dashboard-content .Messages .pagination button:disabled {
+  background: #2400008e;
+  color: #000000;
+}
+.sidebar-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 2.2rem;
+  z-index: 13;
+  display: none;
+  color: #fff;
+}
+@media screen and (max-width: 860px) {
+  .sidebar-menu {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+  }
+  .sidebar-mobile {
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    background: #240000;
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: sidebar 500ms ease-in-out;
+  }
+  .dashboard-content {
+    padding: 3rem 0;
+  }
+  .confirm-modal {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 680px) {
+  .dashboard-content .Messages .messages-box .message-item {
+    min-height: auto;
+  }
+  .dashboard-content .Messages .messages-box .message-item .box {
+    gap: 5px;
+    flex-direction: column;
+  }
+}
+@keyframes sidebar {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+.open-side-bar {
+  color: #000;
+  animation: openSideBar 500ms ease-in-out;
+}
+.close-side-bar {
+  /* color: #000; */
+  transition: 500ms;
+  animation: openSideBar 500ms ease-in-out;
+}
 
-
-
-
-
-
+@keyframes openSideBar {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+.undefind {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.undefind .box {
+  width: 300px;
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+  gap: 10px;  
+}
+.undefind .box h2{
+  font-size: 3rem;
+  color: #240000;
+}
+.undefind .box span{
+  font-size: 1.5rem;
+}
+.undefind .box a{
+  color: #000;
+  text-decoration: underline;
 
 }
-.dashboard-content .Messages .messages-box .email{
-  cursor: pointer;
+.undefind .logo{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 150px;
+  height: 80px;
+  object-fit: cover ;
+
+}
+.loading {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background: rgb(255, 255, 255);
+}
+
+.loader {
+  height: 300px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.loader .box {
+  position: absolute;
+  background: rgba(100, 100, 100, 0.15);
+  background: linear-gradient(0deg, rgba(50, 50, 50, 0.2) 0%, rgba(100, 100, 100, 0.2) 100%);
+  border-radius: 50%;
+  border-top: 1px solid rgba(100, 100, 100, 1);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+  backdrop-filter: blur(5px);
+  animation: ripple 2s infinite ease-in-out;
+}
+
+.loader .box:nth-child(1) {
+  inset: 40%;
+  z-index: 99;
+}
+
+.loader .box:nth-child(2) {
+  inset: 30%;
+  z-index: 98;
+  border-color: rgba(100, 100, 100, 0.8);
+  animation-delay: 0.2s;
+}
+
+.loader .box:nth-child(3) {
+  inset: 20%;
+  z-index: 97;
+  border-color: rgba(100, 100, 100, 0.6);
+  animation-delay: 0.4s;
+}
+
+.loader .box:nth-child(4) {
+  inset: 10%;
+  z-index: 96;
+  border-color: rgba(100, 100, 100, 0.4);
+  animation-delay: 0.6s;
+}
+
+.loader .box:nth-child(5) {
+  inset: 0%;
+  z-index: 95;
+  border-color: rgba(100, 100, 100, 0.2);
+  animation-delay: 0.8s;
+}
+
+.loader .logo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 30%;
+}
+
+.loader .logo svg {
+  fill: grey;
+  width: 100%;
+  animation: color-change 2s infinite ease-in-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 20px -0px;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    fill: grey;
+  }
+  50% {
+    fill: white;
+  }
+  100% {
+    fill: grey;
+  }
 }

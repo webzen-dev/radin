@@ -7,7 +7,7 @@ import { LiaEyeSolid } from "react-icons/lia";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'; // حتماً CSS مربوط به Toastify را ایمپورت کنید
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Login = ({ setOpenLogin }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -30,14 +30,11 @@ const Login = ({ setOpenLogin }) => {
 
     try {
       const response = await axios.post("/api/user/login", { email, password });
-
       if (response.status === 200) {
         const userData = response.data;
         document.cookie = `token=${userData.token}; Path=/; Max-Age=3600; HttpOnly; Secure; SameSite=Strict`;
         router.replace("/dashboard/profile");
-        
         toast.success("Login successful! Redirecting to dashboard...");
-
       } else {
         setError("Login failed. Please check your credentials.");
         toast.error("Login failed. Please check your credentials.");
