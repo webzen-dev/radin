@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["ret-co.ae"], // دامنه مجاز
+        domains: ["ret-co.ae"], 
       },
 };
 

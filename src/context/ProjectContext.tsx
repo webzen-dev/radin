@@ -16,7 +16,7 @@ interface ProjectContextType {
   error: string | null;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>; 
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
 export const ProjectContext = createContext<ProjectContextType | undefined>(
@@ -59,7 +59,7 @@ export const ProjectProvider: React.FC<Props> = ({ children }) => {
         error,
         searchTerm,
         setSearchTerm,
-        setProjects, 
+        setProjects,
       }}
     >
       {children}

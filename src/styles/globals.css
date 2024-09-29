@@ -47,6 +47,7 @@ header {
   padding: 0px 4rem;
   gap: 3vw;
   z-index: 111;
+  /* background: rgba(0,0,0,0.2); */
 }
 header .box {
   padding: 10px 4rem;
@@ -117,7 +118,23 @@ header .search-box {
   color: #fff;
   cursor: pointer;
 }
+::-webkit-scrollbar {
+  width: 7px;
+}
 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(92, 0, 0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
 .search-box-modal {
   width: 100%;
   top: 0;
@@ -129,6 +146,56 @@ header .search-box {
   justify-content: center;
   background: rgba(96, 39, 48, 0.5);
   backdrop-filter: blur(10px);
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-end;
+}
+.search-item-modal {
+  width: 320px;
+  max-height: 40vh;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 10px;
+  min-height: 40vh;
+  align-items: center;
+}
+.search-item-modal .search-item {
+  width: 100%;
+  height: 80px;
+  background: #0000000d;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.search-item-modal .search-item .box-item {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+.search-item-modal .search-item .box-item button {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: #240000;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.x {
+  flex: 0.8;
+}
+.search-item-modal .search-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
 }
 .search-box-modal .form {
   width: 300px;
@@ -272,7 +339,6 @@ header .search-box {
   padding: 10vw;
   overflow: hidden;
 }
-
 .hero-section .title {
   font-size: 1.9rem;
   animation: titleHeroSection 500ms ease-in-out;
@@ -2169,6 +2235,7 @@ footer .social-media a {
     rgba(50, 50, 50, 0.2) 0%,
     rgba(100, 100, 100, 0.2) 100%
   );
+  /* clip-path: polygon( 50% 0, 100% 38%, 81% 100%, 19% 100%, 0 38%); */
   border-radius: 50%;
   border-top: 1px solid rgba(100, 100, 100, 1);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
@@ -2250,8 +2317,6 @@ footer .social-media a {
   }
 }
 
-.aboutUs {
-}
 .aboutUs .hero-section {
   width: 100%;
   height: 50vh;
@@ -2448,8 +2513,8 @@ footer .social-media a {
   .aboutUs .aboutus-section {
     flex-direction: column-reverse;
   }
- .aboutUs .aboutus-section  .box,
- .aboutUs .Mission .box {
+  .aboutUs .aboutus-section .box,
+  .aboutUs .Mission .box {
     width: 100%;
   }
   .aboutUs .aboutus-section img,
@@ -2460,7 +2525,7 @@ footer .social-media a {
   .core-value {
     height: auto;
   }
-  .Vision{
+  .Vision {
     height: auto;
   }
 }
