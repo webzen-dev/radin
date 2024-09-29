@@ -105,7 +105,8 @@ header nav .cta-box a {
 }
 header nav .menu-items li.active a {
   font-size: 1.3rem;
-  color: #8a8a8a;
+  /* color: #8a8a8a; */
+  text-decoration: line-through;
   letter-spacing: 2px;
 }
 header nav .cta-box a svg {
@@ -2124,30 +2125,28 @@ footer .social-media a {
 .undefind .box {
   width: 300px;
   display: flex;
-  align-items:center;
+  align-items: center;
   flex-direction: column;
-  gap: 10px;  
+  gap: 10px;
 }
-.undefind .box h2{
+.undefind .box h2 {
   font-size: 3rem;
   color: #240000;
 }
-.undefind .box span{
+.undefind .box span {
   font-size: 1.5rem;
 }
-.undefind .box a{
+.undefind .box a {
   color: #000;
   text-decoration: underline;
-
 }
-.undefind .logo{
+.undefind .logo {
   position: fixed;
   bottom: 30px;
   right: 30px;
   width: 150px;
   height: 80px;
-  object-fit: cover ;
-
+  object-fit: cover;
 }
 .loading {
   height: 100vh;
@@ -2165,7 +2164,11 @@ footer .social-media a {
 .loader .box {
   position: absolute;
   background: rgba(100, 100, 100, 0.15);
-  background: linear-gradient(0deg, rgba(50, 50, 50, 0.2) 0%, rgba(100, 100, 100, 0.2) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(50, 50, 50, 0.2) 0%,
+    rgba(100, 100, 100, 0.2) 100%
+  );
   border-radius: 50%;
   border-top: 1px solid rgba(100, 100, 100, 1);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px;
@@ -2244,5 +2247,220 @@ footer .social-media a {
   }
   100% {
     fill: grey;
+  }
+}
+
+.aboutUs {
+}
+.aboutUs .hero-section {
+  width: 100%;
+  height: 50vh;
+  justify-content: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aboutUs .hero-section span {
+  font-size: 1.2rem;
+}
+.aboutUs .hero-section p {
+  font-size: 1.4rem;
+}
+
+.aboutUs .hero-section h2 {
+  background: linear-gradient(to top left, #240000, #fff);
+  background-clip: text;
+  color: transparent;
+}
+.aboutUs .about-services {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.aboutUs .about-services .box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.aboutUs .about-services .box .item {
+  width: 250px;
+  height: 250px;
+  min-width: 250px;
+  border: 2px solid rgba(128, 128, 128, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 4px;
+  /* justify-content: ; */
+  gap: 20px;
+}
+.aboutUs .about-services .box .item .icon {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}
+.aboutUs .about-services .box .item .title {
+  font-size: 1.3rem;
+}
+.z {
+  flex: 1;
+}
+.aboutUs .about-services .box .item a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.aboutUs .Mission,
+.aboutUs .aboutus-section {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.aboutUs .aboutus-section img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+.aboutUs .Mission .box,
+.aboutUs .aboutus-section .box {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aboutUs .Mission .title,
+.aboutUs .aboutus-section .box .title {
+  font-size: 2rem;
+  color: #240000;
+}
+.aboutUs .Mission span,
+.aboutUs .aboutus-section .box div > span {
+  font-size: 1.2rem;
+  color: #240000;
+}
+.aboutUs .Mission {
+  gap: 20px;
+}
+.aboutUs .Mission img {
+  width: 400px;
+  height: 200px;
+  object-fit: cover;
+}
+.Vision {
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: end;
+  align-items: center;
+  justify-content: space-around;
+}
+.core-value .box,
+.Vision .box {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+}
+.core-value .box .title,
+.Vision .box .title {
+  font-size: 1.3rem;
+  color: #240000;
+  text-decoration: underline;
+}
+.core-value {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 35vh;
+}
+.core-value ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.core-value ul span {
+  color: #240000;
+  font-size: 1.2rem;
+}
+.company-collaborations {
+  width: 80%;
+  margin: 0 auto;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  overflow-x: hidden;
+}
+.company-collaborations .box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  width: 80%;
+  padding: 20px;
+  max-width: 80%;
+}
+.company-collaborations .box .item {
+  min-width: 300px;
+  height: 150px;
+
+  border: 1px solid rgba(128, 128, 128, 0.425);
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.company-collaborations .box .item img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}
+@media screen and (max-width: 780px) {
+  .aboutUs .Mission {
+    flex-direction: column;
+  }
+  .aboutUs .aboutus-section {
+    flex-direction: column-reverse;
+  }
+ .aboutUs .aboutus-section  .box,
+ .aboutUs .Mission .box {
+    width: 100%;
+  }
+  .aboutUs .aboutus-section img,
+  .aboutUs .Mission img {
+    width: 100%;
+    height: auto;
+  }
+  .core-value {
+    height: auto;
+  }
+  .Vision{
+    height: auto;
   }
 }

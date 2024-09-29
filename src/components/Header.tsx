@@ -68,9 +68,7 @@ const Header = () => {
             <li className={isActive("/aboutUs") ? "active" : ""}>
               <Link href="/aboutUs">About Us</Link>
             </li>
-            <li className={isActive("/contactUs") ? "active" : ""}>
-              <Link href="/contactUs">Contact Us</Link>
-            </li>
+
           </ul>
         </nav>
         <div className="search-box">
