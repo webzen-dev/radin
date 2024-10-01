@@ -15,7 +15,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
   return (
     <div className="confirm-modal">
       <div className="confirm-modal-box">
-        <div className="title">Delete User</div>
+        <div className="title">Delete</div>
         <div className="caption">
           Are you sure you want to delete <span>{username}</span>?
         </div>

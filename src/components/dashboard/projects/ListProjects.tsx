@@ -7,12 +7,10 @@ import ConfirmModal from "../ListAdmins/ConfirmModal";
 
 const ListProjects = () => {
   const projectContext = useContext(ProjectContext);
+  
+  // بررسی context باید بعد از تعریف state‌ها باشد
+  const { projects, loading, error, setProjects } = projectContext || {};
 
-  if (!projectContext) {
-    return <div>Loading...</div>;
-  }
-
-  const { projects, loading, error, setProjects } = projectContext;
   const [showModal, setShowModal] = useState<boolean>(false);
   const [projectToDelete, setProjectToDelete] = useState<{
     id: number;
@@ -82,12 +80,11 @@ const ListProjects = () => {
         )}
       </div>
 
-      {/* نمایش مودال تایید اگر باز باشد */}
       {showModal && projectToDelete && (
         <ConfirmModal
           onConfirm={confirmDelete}
           onCancel={cancelDelete}
-          username={projectToDelete.name} // نمایش نام پروژه در مودال
+          username={projectToDelete.name}
         />
       )}
     </div>

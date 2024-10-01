@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Loader from "../components/loading";
 
-const aboutUs = () => {
+const AboutUs = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +29,8 @@ const aboutUs = () => {
     <div className="aboutUs">
       <Header />
       <AboutUsHeroSection />
-      <AboutServices /> <AboutUsSectoin />
+      <AboutServices />
+      <AboutUsSectoin />
       <Mission />
       <Vision />
       <CoreValues />
@@ -39,4 +40,4 @@ const aboutUs = () => {
   );
 };
 
-export default aboutUs;
+export default AboutUs;

@@ -26,7 +26,7 @@ const ProjectsIndex: FC = () => {
           <Image
             src="https://ret-co.ae/uploads/products/product-46-1-thumb2.jpg?v=-17883965262"
             alt="Product 1"
-            width={150} // Add appropriate width and height based on the image's aspect ratio
+            width={150} 
             height={150}
           />
         </div>

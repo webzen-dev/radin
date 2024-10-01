@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { TiWorldOutline } from "react-icons/ti";
 import bg from "../../public/images/AboutTheCompany.jpg";
+
 const CompanyStats: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const statsRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +30,7 @@ const CompanyStats: React.FC = () => {
     }, 100);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const viewportHeight = window.innerHeight;
     const scrollY = window.scrollY;
 
@@ -38,7 +39,7 @@ const CompanyStats: React.FC = () => {
         setIsVisible(true);
       }
     }
-  };
+  }, [isVisible]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -46,7 +47,7 @@ const CompanyStats: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isVisible]);
+  }, [handleScroll]); // افزودن handleScroll به آرایه وابستگی‌ها
 
   useEffect(() => {
     if (isVisible) {

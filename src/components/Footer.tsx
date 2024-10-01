@@ -23,10 +23,8 @@ const Footer = () => {
   const handleLoginClick = () => {
     const token = document.cookie.split('; ').find(row => row.startsWith('token='));
     if (token) {
-      // اگر توکن وجود دارد، به داشبورد هدایت کنید
       router.push('/dashboard');
     } else {
-      // در غیر این صورت، مودال ورود را باز کنید
       setOpenLogin(true);
     }
   };

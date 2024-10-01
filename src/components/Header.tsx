@@ -31,7 +31,13 @@ const Header = () => {
         className={MobileMenu ? "responsive " : "box"}
         onClick={() => setMobileMenu(false)}
       >
-        <Image src={brand} alt="brand image" className="logo" />
+        <Image src={brand} alt="brand image" className="logo"  
+        //  layout="fill"  
+        width={94}
+        height={50}
+        objectFit="cover" 
+        
+        />
         <nav>
           <div className="cta-box">
             <a href="tel:+971555898116">

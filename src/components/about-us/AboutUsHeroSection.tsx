@@ -4,10 +4,9 @@ const AboutUsHeroSection = () => {
     <div className="hero-section " style={{ background: `url(${bg.src})` }}>
       <h2>RET </h2>
       <span>
-        "RET offers advanced energy services across multiple industries
-        globally."
+      RET offers advanced energy services across multiple industries
+        globally.
       </span>
-      {/* <p>Radin Equipment Trading</p> */}
     </div>
   );
 };

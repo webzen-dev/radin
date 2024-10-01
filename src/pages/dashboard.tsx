@@ -15,10 +15,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const decoded = verifyToken(context);
 
   if (!decoded) {
-    // Redirect to a route that shows the login modal
     return {
       redirect: {
-        destination: "/", // or any route that includes the footer to show the modal
+        destination: "/", 
         permanent: false,
       },
     };

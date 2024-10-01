@@ -6,7 +6,7 @@ const IndustryPride: FC = () => {
       className="IndustryPride"
       style={{ backgroundImage: `url(${bg.src})` }}
     >
-      "Engineering Excellence, Every Step of the Way"
+      Engineering Excellence, Every Step of the Way
     </div>
   );
 };

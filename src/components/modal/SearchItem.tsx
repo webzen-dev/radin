@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { ProjectContext } from "../../context/ProjectContext";
 
 const SearchItem = () => {
   const context = useContext(ProjectContext);
+  const router = useRouter();
 
   if (!context) {
     return <div>Loading...</div>;
@@ -31,7 +33,9 @@ const SearchItem = () => {
             />
             <div className="box-item">
               <span>{project.name}</span>
-              <button>Show Item</button>
+              <button onClick={() => router.push(`/projects/${project.id}`)}>
+                Show Item
+              </button>
             </div>
           </div>
         ))
