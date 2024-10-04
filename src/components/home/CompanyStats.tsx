@@ -2,7 +2,9 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { TiWorldOutline } from "react-icons/ti";
-import bg from "../../public/images/AboutTheCompany.jpg";
+import bg from "../../../public/images/AboutTheCompany.jpg";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 
 const CompanyStats: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -47,7 +49,7 @@ const CompanyStats: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]); // افزودن handleScroll به آرایه وابستگی‌ها
+  }, [handleScroll]);
 
   useEffect(() => {
     if (isVisible) {
@@ -56,9 +58,14 @@ const CompanyStats: React.FC = () => {
       animateCount(1532, setProjectsCount);
     }
   }, [isVisible]);
+  const { itemVariants } = useAnimation();
 
   return (
-    <div
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
       className="CompanyStats"
       ref={statsRef}
       style={{ backgroundImage: `url(${bg.src})` }}
@@ -80,7 +87,7 @@ const CompanyStats: React.FC = () => {
           <span>Completed projects of the company</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

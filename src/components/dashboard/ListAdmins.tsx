@@ -1,12 +1,11 @@
 import AllAdmins from "./ListAdmins/AllAdmins";
 
 const ListAdmins = () => {
-    return ( 
-        <div className="ListAdmins">
-<AllAdmins/>
+  return (
+    <div className="ListAdmins">
+      <AllAdmins />
+    </div>
+  );
+};
 
-        </div>
-     );
-}
- 
 export default ListAdmins;

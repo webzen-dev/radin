@@ -5,7 +5,7 @@ import { GrLinkedinOption } from "react-icons/gr";
 import { LiaFacebookF } from "react-icons/lia";
 import { PiInstagramLogo } from "react-icons/pi";
 import { useCallback, useState } from "react";
-import Login from "../pages/login";
+import Login from "./login";
 
 const Footer = () => {
   const router = useRouter();

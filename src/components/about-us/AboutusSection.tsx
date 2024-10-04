@@ -1,8 +1,18 @@
 import Image from "next/image";
-import img from "../../public/images/aboutus-section.jpg";
+import img from "../../../public/images/aboutus-section.jpg";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 const AboutUsSectoin = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="aboutus-section">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="aboutus-section"
+    >
       <Image src={img} alt="about us image" />
       <div className="box">
         <div className="title">About us</div>
@@ -17,7 +27,7 @@ const AboutUsSectoin = () => {
           Mediterranean and South Asia.
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

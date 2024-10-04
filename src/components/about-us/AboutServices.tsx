@@ -1,14 +1,26 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useAnimation } from "../../context/AnimationContext";
 
 const AboutServices = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="about-services">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="about-services"
+    >
       <h1>Services</h1>
       <div className="box">
         <div className="item">
           <div className="icon"> 🛠️ </div> <div className="z" />
           <span className="title">Parts Supply & Repair</span>
-          <div className="caption">Supplying spare parts and professional repairs.</div>
+          <div className="caption">
+            Supplying spare parts and professional repairs.
+          </div>
           <Link href={"/"}>conteact us</Link>
         </div>
         <div className="item">
@@ -38,11 +50,12 @@ const AboutServices = () => {
           <span className="title">Project Management </span>
           <div className="caption">
             {" "}
-            Managing projects and extending parts' lifespan.          </div>
+            Managing projects and extending parts' lifespan.{" "}
+          </div>
           <Link href={"/"}>conteact us</Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

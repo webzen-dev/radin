@@ -1,8 +1,19 @@
 import Image from "next/image";
-import img from "../../public/images/mission.jpg"
+import img from "../../../public/images/mission.jpg";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
+
 const Mission = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="Mission">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="Mission"
+    >
       <div className="box">
         <div className="title">Mission</div>
         <span> "Delivering a comprehensive range of energy solutions."</span>
@@ -15,7 +26,7 @@ const Mission = () => {
         </p>
       </div>
       <Image src={img} alt="mission image" />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,11 +1,20 @@
 import { MdArrowOutward } from "react-icons/md";
-// import { LiaAwardSolid } from "react-icons/lia";
 import Link from "next/link";
 import { FC } from "react";
+import { motion } from "framer-motion";
+import { useAnimation } from "../../context/AnimationContext";
 
 const AboutTheCompany: FC = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="AboutTheCompany">
+    <motion.div
+      className="AboutTheCompany"
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+    >
       <span>Who We Are</span>
       <span>RET (Radin Equipment Trading) LLC</span>
       <div className="box">
@@ -22,7 +31,7 @@ const AboutTheCompany: FC = () => {
           </span>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

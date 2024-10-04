@@ -2,10 +2,20 @@ import { FC } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 
 const ProjectsIndex: FC = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="ProjectsIndex">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="ProjectsIndex"
+    >
       <div className="box">
         <div className="title">Projects</div>
         <span>
@@ -26,7 +36,7 @@ const ProjectsIndex: FC = () => {
           <Image
             src="https://ret-co.ae/uploads/products/product-46-1-thumb2.jpg?v=-17883965262"
             alt="Product 1"
-            width={150} 
+            width={150}
             height={150}
           />
         </div>
@@ -62,7 +72,7 @@ const ProjectsIndex: FC = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

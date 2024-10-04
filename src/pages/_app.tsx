@@ -3,7 +3,7 @@
 import "../styles/globals.css";
 import ProgressBar from "../components/ProgressBar";
 import { ProjectProvider } from "../context/ProjectContext";
-import InstallButton from "../components/InstallButton";
+import { AnimationProvider } from "../context/AnimationContext";
 type AppProps = {
   Component: React.ElementType;
   pageProps: any;
@@ -12,9 +12,10 @@ type AppProps = {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ProjectProvider>
+      <AnimationProvider>
       <ProgressBar />
       <Component {...pageProps} />
-      <InstallButton/>
+      </AnimationProvider>
     </ProjectProvider>
   );
 }

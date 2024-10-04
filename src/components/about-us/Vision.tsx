@@ -1,6 +1,17 @@
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
+
 const Vision = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="Vision">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="Vision"
+    >
       <div className="box">
         {" "}
         <div className="title">Vision</div>
@@ -14,7 +25,7 @@ const Vision = () => {
         </div>
       </div>
       <div></div>
-    </div>
+    </motion.div>
   );
 };
 

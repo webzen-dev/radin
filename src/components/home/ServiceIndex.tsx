@@ -4,10 +4,18 @@ import { GiTeamUpgrade } from "react-icons/gi";
 import { GrServerCluster } from "react-icons/gr";
 import { MdEngineering, MdManageAccounts } from "react-icons/md";
 import { TbSolarElectricity } from "react-icons/tb";
-
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 const ServiceIndex: FC = () => {
+  const { itemVariants } = useAnimation();
   return (
-    <div className="ServiceIndex">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="ServiceIndex"
+    >
       <div className="box">Service</div>
       <div className="box">
         <div className="item main">
@@ -35,7 +43,7 @@ const ServiceIndex: FC = () => {
           Reverse Engineering, especially for old and obsolete items
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

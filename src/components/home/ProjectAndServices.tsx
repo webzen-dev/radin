@@ -1,10 +1,20 @@
 import { FC } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Link from "next/link";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 
 const ProjectAndServices: FC = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="ProjectAndServices">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="ProjectAndServices"
+    >
       <div className="box">
         <div className="title">Projects</div>
         <span>
@@ -32,7 +42,7 @@ const ProjectAndServices: FC = () => {
           </a>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

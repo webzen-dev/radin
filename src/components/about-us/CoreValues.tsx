@@ -1,6 +1,17 @@
+import { motion } from "framer-motion";
+import { useAnimation } from "../../context/AnimationContext";
+
 const CoreValues = () => {
+  const { itemVariants } = useAnimation();
+
   return (
-    <div className="core-value">
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      className="core-value"
+    >
       <div className="box">
         {" "}
         <div className="title">Core Values</div>
@@ -25,7 +36,7 @@ const CoreValues = () => {
         </ul>
       </div>{" "}
       <div></div>
-    </div>
+    </motion.div>
   );
 };
 

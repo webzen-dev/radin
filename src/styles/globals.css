@@ -8,6 +8,7 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   scroll-behavior: smooth;
 }
+
 a.active {
   color: var(--wine);
 }
@@ -1614,8 +1615,11 @@ footer .social-media a {
   align-items: center;
   background-position: center;
   background-size: cover;
+  justify-content: center;
   background-repeat: no-repeat;
   padding-left: 4rem;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .ProjectsHeroSection .image-box::before {
@@ -1625,15 +1629,22 @@ footer .social-media a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #240000, #2400005d);
+  background: linear-gradient(to bottom, #31000081, #2b0000b7);
   z-index: 1;
   opacity: 0.9;
 }
-
 .ProjectsHeroSection .image-box span {
-  color: #fff;
+  color: white;
+  z-index: 22;
+  font-size: 1rem;
+}
+.ProjectsHeroSection .image-box h2 {
   font-weight: bold;
   z-index: 11;
+  font-size: 3rem;
+  background: linear-gradient(200deg, rgb(156, 156, 156), #fff);
+  background-clip: text;
+  color: transparent;
 }
 
 .ProjectsHeroSection .search-box {
@@ -1721,9 +1732,8 @@ footer .social-media a {
   width: 100%;
   height: 60%;
   object-fit: cover;
-  mix-blend-mode: multiply;  border-radius: 2px;
-
-
+  mix-blend-mode: multiply;
+  border-radius: 2px;
 }
 .projects-page .project-list .project-item .title {
   padding: 0 20px;
@@ -2383,6 +2393,12 @@ footer .social-media a {
   border-radius: 4px;
   width: 40px;
   height: 40px;
+
+}
+@media screen and (max-width:780px){
+  .aboutUs .about-services .box .item{
+    width: 100%;
+  }
 }
 .aboutUs .about-services .box .item .title {
   font-size: 1.3rem;

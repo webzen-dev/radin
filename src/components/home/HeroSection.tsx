@@ -4,7 +4,7 @@ import { GrInstagram, GrLinkedinOption } from "react-icons/gr";
 import { LiaFacebookF } from "react-icons/lia";
 import { FiChevronDown } from "react-icons/fi";
 import { FC } from "react";
-import bg from "../../public/images/hero-section.jpg";
+import bg from "../../../public/images/hero-section.jpg";
 const HeroSection: FC = () => {
   const scrollToSection = () => {
     window.scrollTo(0, 600);

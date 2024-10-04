@@ -8,17 +8,20 @@ import { MdOutlineEmail } from "react-icons/md";
 import { PiInstagramLogo } from "react-icons/pi";
 import Link from "next/link";
 import axios from "axios";
-import HCaptcha from "@hcaptcha/react-hcaptcha"; 
-import { toast, ToastContainer } from 'react-toastify'; // ایمپورت توست
-import 'react-toastify/dist/ReactToastify.css'; 
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { toast, ToastContainer } from "react-toastify"; // ایمپورت توست
+import "react-toastify/dist/ReactToastify.css";
+import { useAnimation } from "../../context/AnimationContext";
+import { motion } from "framer-motion";
 
 const ContactUsIndex: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-
+  const { itemVariants } = useAnimation();
+  
   const openModal = (e: React.FormEvent) => {
     e.preventDefault();
     setShowModal(true);
@@ -61,7 +64,12 @@ const ContactUsIndex: FC = () => {
   };
 
   return (
-    <>
+    <motion.div
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+    >
       <div className="ContactUsIndex">
         <div className="box">
           <div className="title">Contact Us</div>
@@ -164,7 +172,7 @@ const ContactUsIndex: FC = () => {
           </div>
         </div>
       )}
-    </>
+    </motion.div>
   );
 };
 

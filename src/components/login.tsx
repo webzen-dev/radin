@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CiLock, CiUnlock, CiUser } from "react-icons/ci";
 import { FaRegEyeSlash } from "react-icons/fa";
-import logo from "../public/ret.png";
+import logo from "../../public/ret.png";
 import { useState, useEffect } from "react";
 import { LiaEyeSolid } from "react-icons/lia";
 import axios from "axios";
