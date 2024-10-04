@@ -1,43 +1,47 @@
-import { useState, useEffect } from "react";
-import AboutTheCompany from "../components/home/AboutTheCompany";
-import CompanyStats from "../components/home/CompanyStats";
-import ProjectsIndex from "../components/home/ProjectsIndex";
-import IndustryPride from "../components/home/IndustryPride";
-import ServiceIndex from "../components/home/ServiceIndex";
-import ProjectAndServices from "../components/home/ProjectAndServices";
-import ContactUsIndex from "../components/home/ContactUsIndex";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import HeroSection from "../components/home/HeroSection";
+import React, { useState, useEffect, Suspense, useTransition } from "react";
 import Loading from "../components/loading";
 
+const Header = React.lazy(() => import("../components/Header"));
+const InstallPWAButton = React.lazy(() => import("../components/InstallButton"));
+const HeroSection = React.lazy(() => import("../components/home/HeroSection"));
+const AboutTheCompany = React.lazy(() => import("../components/home/AboutTheCompany"));
+const CompanyStats = React.lazy(() => import("../components/home/CompanyStats"));
+const ProjectsIndex = React.lazy(() => import("../components/home/ProjectsIndex"));
+const IndustryPride = React.lazy(() => import("../components/home/IndustryPride"));
+const ServiceIndex = React.lazy(() => import("../components/home/ServiceIndex"));
+const ProjectAndServices = React.lazy(() => import("../components/home/ProjectAndServices"));
+const ContactUsIndex = React.lazy(() => import("../components/home/ContactUsIndex"));
+const Footer = React.lazy(() => import("../components/Footer"));
+
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [isPending, startTransition] = useTransition();
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    startTransition(() => {
+      setIsHydrated(true);
+    });
   }, []);
 
-  if (loading) {
+  if (!isHydrated || isPending) {
     return <Loading />;
   }
 
   return (
-    <div>
-      <Header />
-      <HeroSection />
-      <AboutTheCompany />
-      <CompanyStats />
-      <ProjectsIndex />
-      <IndustryPride />
-      <ServiceIndex />
-      <ProjectAndServices />
-      <ContactUsIndex />
-      <Footer />
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div>
+        <Header />
+        <InstallPWAButton />
+        <HeroSection />
+        <AboutTheCompany />
+        <CompanyStats />
+        <ProjectsIndex />
+        <IndustryPride />
+        <ServiceIndex />
+        <ProjectAndServices />
+        <ContactUsIndex />
+        <Footer />
+      </div>
+    </Suspense>
   );
 }

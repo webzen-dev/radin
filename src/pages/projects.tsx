@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import ProjectsHeroSection from "../components/projects/ProjectsHeroSection";
-import ProjectList from "../components/projects/ProjectsList";
+import React, { useEffect, useState, Suspense } from "react";
 import Loader from "../components/loading";
+
+const Header = React.lazy(() => import("../components/Header"));
+const Footer = React.lazy(() => import("../components/Footer"));
+const ProjectsHeroSection = React.lazy(() => import("../components/projects/ProjectsHeroSection"));
+const ProjectList = React.lazy(() => import("../components/projects/ProjectsList"));
 
 const Projects = () => {
   const [loading, setLoading] = useState(true);
@@ -21,12 +22,14 @@ const Projects = () => {
   }
 
   return (
-    <div className="projects-page">
+    <Suspense fallback={<Loader />}>
+      <div className="projects-page">
         <Header />
         <ProjectsHeroSection />
         <ProjectList />
         <Footer />
-    </div>
+      </div>
+    </Suspense>
   );
 };
 

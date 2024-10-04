@@ -1,40 +1,50 @@
-import { useEffect, useState } from 'react';
+"use client"; // This makes the component a Client Component
 
-const InstallButton = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstallPromptVisible, setInstallPromptVisible] = useState(false);
+import { useState, useEffect } from "react";
+import { IoMdClose } from "react-icons/io";
+
+export default function InstallPWAButton() {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstallable, setIsInstallable] = useState(false);
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (event) => {
-      event.preventDefault(); 
-      setDeferredPrompt(event); 
-      setInstallPromptVisible(true); 
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
-  const handleInstallClick = async () => {
+  const handleInstallClick = () => {
     if (deferredPrompt) {
-      deferredPrompt.prompt(); 
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
-      setDeferredPrompt(null); 
-      setInstallPromptVisible(false); 
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
+        } else {
+          console.log("User dismissed the install prompt");
+        }
+        setDeferredPrompt(null);
+      });
     }
   };
 
   return (
-    isInstallPromptVisible && (
-      <button onClick={handleInstallClick}>
-        نصب برنامه
+    isInstallable && (
+      <button onClick={handleInstallClick} id="pwaInstallButton">
+        Install PWA
+        <button onClick={() => setIsInstallable(!isInstallable)}><IoMdClose />
+        </button>
       </button>
     )
   );
-};
-
-export default InstallButton;
+}

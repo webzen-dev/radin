@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import AboutServices from "../components/about-us/AboutServices";
-import AboutUsHeroSection from "../components/about-us/AboutUsHeroSection";
-import AboutUsSectoin from "../components/about-us/AboutusSection";
-import CompanyCollaborations from "../components/about-us/CompanyCollaborations";
-import CoreValues from "../components/about-us/CoreValues";
-import Mission from "../components/about-us/Mission";
-import Vision from "../components/about-us/Vision";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import React, { useEffect, useState, Suspense } from "react";
 import Loader from "../components/loading";
+
+const Header = React.lazy(() => import("../components/Header"));
+const Footer = React.lazy(() => import("../components/Footer"));
+const AboutUsHeroSection = React.lazy(() => import("../components/about-us/AboutUsHeroSection"));
+const AboutServices = React.lazy(() => import("../components/about-us/AboutServices"));
+const AboutUsSectoin = React.lazy(() => import("../components/about-us/AboutusSection"));
+const Mission = React.lazy(() => import("../components/about-us/Mission"));
+const Vision = React.lazy(() => import("../components/about-us/Vision"));
+const CoreValues = React.lazy(() => import("../components/about-us/CoreValues"));
+const CompanyCollaborations = React.lazy(() => import("../components/about-us/CompanyCollaborations"));
 
 const AboutUs = () => {
   const [loading, setLoading] = useState(true);
@@ -26,17 +27,19 @@ const AboutUs = () => {
   }
 
   return (
-    <div className="aboutUs">
-      <Header />
-      <AboutUsHeroSection />
-      <AboutServices />
-      <AboutUsSectoin />
-      <Mission />
-      <Vision />
-      <CoreValues />
-      <CompanyCollaborations />
-      <Footer />
-    </div>
+    <Suspense fallback={<Loader />}>
+      <div className="aboutUs">
+        <Header />
+        <AboutUsHeroSection />
+        <AboutServices />
+        <AboutUsSectoin />
+        <Mission />
+        <Vision />
+        <CoreValues />
+        <CompanyCollaborations />
+        <Footer />
+      </div>
+    </Suspense>
   );
 };
 
