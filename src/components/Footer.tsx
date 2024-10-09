@@ -14,16 +14,18 @@ const Footer = () => {
   const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }, []);
-  
+
   const [openLogin, setOpenLogin] = useState(false);
-  
+
   const handleLoginClick = () => {
-    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="));
     if (token) {
-      router.push('/dashboard');
+      router.push("/dashboard");
     } else {
       setOpenLogin(true);
     }
@@ -33,7 +35,9 @@ const Footer = () => {
     <footer>
       {openLogin && <Login setOpenLogin={setOpenLogin} />}
       <div id="up" onClick={scrollToTop}>
-        <span><FaAngleUp /></span>
+        <span>
+          <FaAngleUp />
+        </span>
       </div>
       <ul>
         <li className={isActive("/") ? "active" : ""}>
@@ -63,9 +67,9 @@ const Footer = () => {
           <LiaFacebookF />
         </a>
       </div>
-      <div className="about_developer">
+      {/* <div className="about_developer">
         <Link href={"developers"}>About developers</Link>
-      </div>
+      </div> */}
     </footer>
   );
 };

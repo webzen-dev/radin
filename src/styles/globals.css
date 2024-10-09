@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* user-select: none; */
+  user-select: none;
   list-style: none;
   text-decoration: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

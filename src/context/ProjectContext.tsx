@@ -36,7 +36,7 @@ export const ProjectProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/projects");
+        const response = await axios.get("/api/projects");
         if (response.status !== 200) {
           throw new Error("Failed to fetch projects");
         }
