@@ -42,7 +42,7 @@ const ContactUsIndex: FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/message", {
+      const response = await axios.post("/api/message", {
         username: name,
         email: email,
         content: message,
