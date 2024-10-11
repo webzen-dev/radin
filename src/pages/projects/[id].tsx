@@ -11,10 +11,7 @@ const ProjectItem = () => {
   if (!context) {
     return <div>Loading...</div>;
   }
-  const { projects, loading, error } = context;
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  const { projects,  } = context;
 
   const project = projects.find((project) => project.id === Number(id));
 
