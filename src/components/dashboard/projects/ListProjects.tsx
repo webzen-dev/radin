@@ -9,7 +9,7 @@ const ListProjects = () => {
   const projectContext = useContext(ProjectContext);
   
   // بررسی context باید بعد از تعریف state‌ها باشد
-  const { projects, loading, error, setProjects } = projectContext || {};
+  const { projects} = projectContext || {};
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [projectToDelete, setProjectToDelete] = useState<{
@@ -26,9 +26,9 @@ const ListProjects = () => {
     if (projectToDelete !== null) {
       try {
         await axios.delete(`http://localhost:3000/api/projects/${projectToDelete.id}`);
-        setProjects((prevProjects) =>
-          prevProjects.filter((project) => project.id !== projectToDelete.id)
-        );
+        // setProjects((prevProjects) =>
+        //   prevProjects.filter((project) => project.id !== projectToDelete.id)
+        // );
         setShowModal(false);
       } catch (err) {
         console.error("Error deleting project:", err.message);
@@ -41,13 +41,13 @@ const ListProjects = () => {
     setProjectToDelete(null);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   return (
     <div className="list-project">
