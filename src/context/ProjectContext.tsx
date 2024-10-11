@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
+// تعریف نوع پروژه
 interface Project {
   id: number;
   name: string;
@@ -10,56 +10,62 @@ interface Project {
   image: string;
 }
 
+// تعریف نوع Context
 interface ProjectContextType {
   projects: Project[];
-  loading: boolean;
-  error: string | null;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
+// ایجاد Context
 export const ProjectContext = createContext<ProjectContextType | undefined>(
   undefined
 );
 
+// تعریف Props
 interface Props {
   children: ReactNode;
 }
 
+// ایجاد Provider
 export const ProjectProvider: React.FC<Props> = ({ children }) => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  // تعریف آرایه ثابت پروژه‌ها
+  const initialProjects: Project[] = [
+    {
+      id: 1,
+      name: "Swan Analytical Instrument",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      brand: "brand A",
+      image: "https://ret-co.ae/uploads/products/product-45-1-thumb2.jpg",
+      category: "Category 1",
+    },
+    {
+      id: 2,
+      name: "Parts for Flender Gearbox",
+      description: "test",
+      brand: "brand 2",
+      image: "https://ret-co.ae/uploads/products/product-43-1-thumb2.jpg",
+      category: "Category 12",
+    },
+    {
+      id: 3,
+      name: "Parts for Mapro Oil Mist Blower",
+      description: "This is a new project",
+      brand: "Brand 1",
+      image: "https://ret-co.ae/uploads/products/product-41-1-thumb2.jpg",
+      category: "Category 32",
+    },
+  ];
+
+  const [projects] = useState<Project[]>(initialProjects); // استفاده از آرایه ثابت
   const [searchTerm, setSearchTerm] = useState<string>("");
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await axios.get("/api/projects");
-        if (response.status !== 200) {
-          throw new Error("Failed to fetch projects");
-        }
-        setProjects(response.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   return (
     <ProjectContext.Provider
       value={{
         projects,
-        loading,
-        error,
         searchTerm,
         setSearchTerm,
-        setProjects,
       }}
     >
       {children}

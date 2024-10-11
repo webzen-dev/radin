@@ -1759,7 +1759,7 @@ footer .social-media a {
 .projects-page .project-list .project-item {
   padding: 10px;
   width: 220px;
-  /* height: 270px; */
+  height: 270px;
   display: flex;
   border-radius: 4px;
   flex-direction: column;
