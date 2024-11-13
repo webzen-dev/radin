@@ -14,7 +14,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/message");
+        const response = await fetch("/api/message");
         const data = await response.json();
         const sortedMessages = data.sort((a, b) => a.isRead - b.isRead);
         setMessages(sortedMessages);
@@ -34,7 +34,7 @@ const Messages = () => {
     const message = messages.find((msg) => msg.id === id);
     if (!message.isRead) {
       try {
-        await fetch(`http://localhost:3000/api/message/${id}`, {
+        await fetch(`/api/message/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const Messages = () => {
 
   const handleDeleteMessage = async (id) => {
     try {
-      await fetch(`http://localhost:3000/api/message/${id}`, {
+      await fetch(`/api/message/${id}`, {
         method: "DELETE",
       });
       setMessages((prevMessages) =>
@@ -109,7 +109,7 @@ const Messages = () => {
             key={message.id}
             className={`message-item ${!message.isRead && "isReadFalse"}`}
             style={
-              !message.isRead ? { background:"#8a8a8a3b" } : { border: "none" }
+              !message.isRead ? { background: "#8a8a8a3b" } : { border: "none" }
             }
           >
             {!message.isRead && <div className="circle" />}
@@ -157,10 +157,6 @@ const Messages = () => {
           Previous
         </button>
         <button
-
-
-
-          
           onClick={nextPage}
           disabled={(currentPage + 1) * messagesPerPage >= messages.length}
         >

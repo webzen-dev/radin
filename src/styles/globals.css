@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
+  /* user-select: none; */
   list-style: none;
   text-decoration: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1530,16 +1530,7 @@ footer .social-media a {
   align-items: center;
   animation: ConfirmModal 500ms ease-in-out;
 }
-@keyframes ConfirmModal {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+
 .confirm-modal .confirm-modal-box > .title {
   font-size: 1.3rem;
   font-weight: 700;
@@ -1842,18 +1833,16 @@ footer .social-media a {
     height: auto;
     width: 100%;
     align-items: flex-start;
-
   }
   .ProjectsHeroSection .search-box .search-input {
     width: 90%;
     max-width: none;
   }
-  .projects-page .project-list .project-item{
+  .projects-page .project-list .project-item {
     width: 100%;
   }
 }
-@media screen and (max-width: 670px){
-
+@media screen and (max-width: 670px) {
 }
 .AddAdmin {
   display: flex;
@@ -2665,11 +2654,18 @@ footer .social-media a {
   border: none;
   background: #240000;
   border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+.project-item-page .box > button.last-btn {
+  background: #fff;
+  border: 1px solid #000;
 }
 .project-item-page .box button a {
   text-transform: capitalize;
   text-decoration: underline;
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
 }
 @media screen and (max-width: 930px) {
   .project-item-page {
@@ -2695,5 +2691,61 @@ footer .social-media a {
   }
   .project-item-page .box:first-child {
     width: 100%;
+  }
+}
+.request-box {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+.request-box > .box {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 4px;
+  gap: 10px;
+  animation: ConfirmModal 500ms ease-in-out;
+}
+.request-box .input-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  border-bottom: 2px solid #000;
+}
+.request-box .input-box input::placeholder {
+  color: black;
+  outline: none;
+}
+.request-box .input-box {
+  margin: 10px 0;
+  height: 40px;
+  width: 100%;
+}
+.request-box .box .last-btn {
+  background: none;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  margin:5px 0;
+
+}
+@keyframes ConfirmModal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

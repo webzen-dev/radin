@@ -11,7 +11,7 @@ const IndustryPride: FC = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="IndustryPride"
       style={{ backgroundImage: `url(${bg.src})` }}
     >

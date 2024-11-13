@@ -15,7 +15,7 @@ const AllAdmins = () => {
   const getAdminsData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/user");
+      const response = await axios.get("/api/user");
       setAdminData(response.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ const AllAdmins = () => {
     if (adminToDelete !== null) {
       try {
         await axios.delete(
-          `http://localhost:3000/api/user?id=${adminToDelete.id}`
+          `/api/user?id=${adminToDelete.id}`
         );
         setAdminData((prevData) =>
           prevData.filter((admin) => admin.id !== adminToDelete.id)

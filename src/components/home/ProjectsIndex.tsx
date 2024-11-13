@@ -13,7 +13,7 @@ const ProjectsIndex: FC = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="ProjectsIndex"
     >
       <div className="box">

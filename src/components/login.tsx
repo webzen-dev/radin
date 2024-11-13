@@ -32,7 +32,7 @@ const Login = ({ setOpenLogin }) => {
       const response = await axios.post("/api/user/login", { email, password });
       if (response.status === 200) {
         const userData = response.data;
-        document.cookie = `token=${userData.token}; Path=/; Max-Age=3600; HttpOnly; Secure; SameSite=Strict`;
+        document.cookie = `token=${userData.token}; Path=/; Max-Age=3600; HttpOnly; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}`;
         router.replace("/dashboard/profile");
         toast.success("Login successful! Redirecting to dashboard...");
       } else {

@@ -9,7 +9,7 @@ import { PiInstagramLogo } from "react-icons/pi";
 import Link from "next/link";
 import axios from "axios";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { toast, ToastContainer } from "react-toastify"; // ایمپورت توست
+import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 import { useAnimation } from "../../context/AnimationContext";
 import { motion } from "framer-motion";
@@ -68,7 +68,7 @@ const ContactUsIndex: FC = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
     >
       <div className="ContactUsIndex">
         <div className="box">

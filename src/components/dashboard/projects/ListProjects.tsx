@@ -25,7 +25,7 @@ const ListProjects = () => {
   const confirmDelete = async () => {
     if (projectToDelete !== null) {
       try {
-        await axios.delete(`http://localhost:3000/api/projects/${projectToDelete.id}`);
+        await axios.delete(`/api/projects/${projectToDelete.id}`);
         // setProjects((prevProjects) =>
         //   prevProjects.filter((project) => project.id !== projectToDelete.id)
         // );

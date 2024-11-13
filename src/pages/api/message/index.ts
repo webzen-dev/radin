@@ -22,7 +22,7 @@ export default async function handler(req, res) {
           data: {
             content,
             email,
-            username, // این فیلد اختیاری است
+            username,
           },
         });
         return res.status(201).json(newMessage);

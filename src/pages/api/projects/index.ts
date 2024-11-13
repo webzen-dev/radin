@@ -3,7 +3,6 @@ import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     // Get all projects
@@ -11,7 +10,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const projects = await prisma.project.findMany();
       res.status(200).json(projects);
     } catch (error) {
-      res.status(500).json({ error: 'Error fetching projects' });
+      console.error("Error fetching projects:", error);
+      res.status(500).json({ error: `Error fetching projects: ${error.message}` });
     }
   } else if (req.method === 'POST') {
     // Create new project
@@ -33,7 +33,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
       res.status(201).json(newProject);
     } catch (error) {
-      res.status(500).json({ error: 'Error creating project' });
+      console.error("Error creating project:", error);
+      res.status(500).json({ error: `Error creating project: ${error.message}` });
     }
   } else {
     res.setHeader('Allow', ['GET', 'POST']);

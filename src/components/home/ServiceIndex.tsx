@@ -13,7 +13,7 @@ const ServiceIndex: FC = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="ServiceIndex"
     >
       <div className="box">Service</div>

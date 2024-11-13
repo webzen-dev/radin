@@ -13,9 +13,6 @@ const SearchItem = () => {
 
   const { projects, searchTerm } = context;
 
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error}</div>;
-
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

@@ -1,10 +1,11 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html>
       <Head>
-      <title>RET Compony</title> 
+        <title>RET Compony</title>
+        <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <body>

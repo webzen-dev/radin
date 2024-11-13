@@ -13,7 +13,7 @@ const AboutTheCompany: FC = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
     >
       <span>Who We Are</span>
       <span>RET (Radin Equipment Trading) LLC</span>

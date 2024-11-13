@@ -15,7 +15,9 @@ export default async function handler(
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     try {
@@ -35,10 +37,11 @@ export default async function handler(
         JWT_SECRET,
         { expiresIn: "1h" }
       );
-
       res.setHeader(
         "Set-Cookie",
-        `token=${token}; HttpOnly; Secure; Path=/; Max-Age=3600; SameSite=Strict`
+        `token=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict${
+          process.env.NODE_ENV === "production" ? "; Secure" : ""
+        }`
       );
 
       return res.status(200).json({ message: "Login successful" });
@@ -47,6 +50,8 @@ export default async function handler(
       return res.status(500).json({ message: "Internal server error" });
     }
   } else {
-    return res.status(405).json({ message: `Method ${req.method} not allowed` });
+    return res
+      .status(405)
+      .json({ message: `Method ${req.method} not allowed` });
   }
 }

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./prisma:/pages/prisma
+      - ./public:/pages/public 
+      - ./src/pages:/pages    
+      - ./.next:/pages/.next  
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    command: ["node", ".next/standalone/server.js"]
