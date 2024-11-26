@@ -10,7 +10,7 @@ const AboutServices = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="about-services"
     >
       <h1>Services</h1>

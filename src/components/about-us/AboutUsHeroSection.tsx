@@ -9,7 +9,7 @@ const AboutUsHeroSection = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="hero-section "
       style={{ background: `url(${bg.src})` }}
     >

@@ -9,7 +9,7 @@ const CoreValues = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="core-value"
     >
       <div className="box">

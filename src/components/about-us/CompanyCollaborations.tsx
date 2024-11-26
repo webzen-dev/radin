@@ -47,7 +47,7 @@ const CompanyCollaborations = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="company-collaborations"
     >
       <h2>Company Collaborations</h2>

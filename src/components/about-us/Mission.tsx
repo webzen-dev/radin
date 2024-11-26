@@ -11,7 +11,7 @@ const Mission = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="Mission"
     >
       <div className="box">

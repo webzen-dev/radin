@@ -9,7 +9,7 @@ const Vision = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="Vision"
     >
       <div className="box">

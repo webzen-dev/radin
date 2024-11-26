@@ -10,7 +10,7 @@ const AboutUsSectoin = () => {
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="aboutus-section"
     >
       <Image src={img} alt="about us image" />
