@@ -3,13 +3,16 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ConfirmModal from "./ListAdmins/ConfirmModal";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [openMessageId, setOpenMessageId] = useState(null);
   const [unreadCount, setUnreadCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0); // مدیریت صفحه‌ی فعلی
-  const messagesPerPage = 5; // تعداد پیام‌ها در هر صفحه
+  const [currentPage, setCurrentPage] = useState(0);
+  const messagesPerPage = 5;
+  const [showConfirmModal, setShowConfirmModal] = useState(false); // State to show the confirmation modal
+  const [messageToDelete, setMessageToDelete] = useState(null); // State to store the message ID to be deleted
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -53,28 +56,33 @@ const Messages = () => {
     }
   };
 
-  const handleDeleteMessage = async (id) => {
+  const handleDeleteMessage = (id) => {
+    setMessageToDelete(id);
+    setShowConfirmModal(true); // Show the confirmation modal
+  };
+
+  const confirmDeleteMessage = async () => {
     try {
-      await fetch(`/api/message/${id}`, {
+      await fetch(`/api/message/${messageToDelete}`, {
         method: "DELETE",
       });
       setMessages((prevMessages) =>
-        prevMessages.filter((msg) => msg.id !== id)
+        prevMessages.filter((msg) => msg.id !== messageToDelete)
       );
-      const deletedMessage = messages.find((msg) => msg.id === id);
+      const deletedMessage = messages.find((msg) => msg.id === messageToDelete);
       if (!deletedMessage.isRead) {
         setUnreadCount((prevCount) => prevCount - 1);
       }
+      toast.success("Message deleted successfully!");
     } catch (error) {
       console.error("Error deleting message:", error);
+      toast.error("Failed to delete message.");
     }
+    setShowConfirmModal(false); // Close the confirmation modal after deletion
   };
 
-  const handleCopyEmail = (email) => {
-    navigator.clipboard
-      .writeText(email)
-      .then(() => toast.success("Email copied to clipboard!"))
-      .catch(() => toast.error("Failed to copy email."));
+  const cancelDeleteMessage = () => {
+    setShowConfirmModal(false); // Close the confirmation modal without deleting
   };
 
   const nextPage = () => {
@@ -89,7 +97,6 @@ const Messages = () => {
     }
   };
 
-  // پیام‌های فعلی برای صفحه فعلی
   const currentMessages = messages.slice(
     currentPage * messagesPerPage,
     (currentPage + 1) * messagesPerPage
@@ -116,35 +123,27 @@ const Messages = () => {
             <div className="box">
               <div className="one-box">
                 <div className="user">
-                  <span>Username : </span>
+                  <span>Username: </span>
                   {message.username}
                 </div>
-                <div
-                  className="email"
-                  onClick={() => handleCopyEmail(message.email)}
-                >
-                  <span>Email : </span>
-                  {message.email}
+                <div className="email">
+                  <span>Email: </span>
+                  <a href={`mailto:${message.email}`}>{message.email}</a>
                 </div>
               </div>
               <button onClick={() => handleOpenMessage(message.id)}>
                 {openMessageId === message.id ? "Hide message" : "Show message"}
-                {openMessageId === message.id ? (
-                  <FaRegEyeSlash />
-                ) : (
-                  <FaRegEye />
-                )}
+                {openMessageId === message.id ? <FaRegEyeSlash /> : <FaRegEye />}
               </button>
               <button onClick={() => handleDeleteMessage(message.id)}>
-                Delete
-                <MdDeleteOutline />
+                Delete <MdDeleteOutline />
               </button>
             </div>
             {openMessageId === message.id && (
               <div className="show-message">
                 <div className="content">{message.content}</div>
                 <div className="date">
-                  <span>Date :</span>{" "}
+                  <span>Date: </span>
                   {new Date(message.createdAt).toLocaleDateString()}
                 </div>
               </div>
@@ -163,6 +162,14 @@ const Messages = () => {
           Next
         </button>
       </div>
+
+      {showConfirmModal && (
+        <ConfirmModal
+          username={messages.find((msg) => msg.id === messageToDelete)?.username}
+          onConfirm={confirmDeleteMessage}
+          onCancel={cancelDeleteMessage}
+        />
+      )}
     </div>
   );
 };

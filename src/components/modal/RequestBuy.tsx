@@ -5,12 +5,25 @@ import { useState } from "react";
 const RequestBuy = ({ projectinfo, closeModal }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // برای مدیریت وضعیت در حال ارسال
 
   const handleRequestToBuy = async (e) => {
     e.preventDefault();
 
+    // نمایش toast برای نشان دادن وضعیت "در حال ارسال"
+    const loadingToast = toast.loading("Sending your request...", {
+      position: "top-right",
+      autoClose: false, // این بار باید تا زمانی که درخواست تمام شود باز بماند
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+    });
+
     try {
       const content = `User ${username} requested to buy the product ${projectinfo.name} (ID: ${projectinfo.id}).`;
+
+      setIsSubmitting(true); // هنگام ارسال درخواست، حالت "در حال ارسال" فعال می‌شود
 
       await axios.post("/api/message", {
         content,
@@ -18,30 +31,29 @@ const RequestBuy = ({ projectinfo, closeModal }) => {
         username,
       });
 
-      toast.success("Your purchase request has been successfully sent!", {
-        position: "top-right",
+      toast.update(loadingToast, {
+        render: "Your purchase request has been successfully sent!",
+        type: "success",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
       });
 
       closeModal();
     } catch (error) {
-      toast.error(
-        "An error occurred while sending your purchase request. Please try again later.",
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
+      toast.update(loadingToast, {
+        render: "An error occurred while sending your purchase request. Please try again later.",
+        type: "error",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } finally {
+      setIsSubmitting(false); 
     }
   };
 
@@ -68,8 +80,8 @@ const RequestBuy = ({ projectinfo, closeModal }) => {
               required
             />
           </div>
-          <button type="submit">Send</button>
-          <button className="last-btn" onClick={() => closeModal()}>
+          <button type="submit" disabled={isSubmitting}>Send</button>
+          <button className="last-btn" onClick={() => closeModal()} disabled={isSubmitting}>
             cancel
           </button>
         </form>

@@ -3,7 +3,10 @@ import withPWA from "@ducanh2912/next-pwa";
 
 const nextConfig = {
   output: "standalone",
-
+  experimental:{
+    serverActions:true,
+    
+  },
   images: {
     domains: ["ret-co.ae"],
   },

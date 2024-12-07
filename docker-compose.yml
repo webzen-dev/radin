@@ -1,17 +1,38 @@
 version: '3.8'
 
 services:
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=appdb
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - sameNetworkAsMysql
+    ports:
+      - 3307:3306
+    volumes:
+      - db-data:/var/lib/mysql
+
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./prisma:/pages/prisma
-      - ./public:/pages/public 
-      - ./src/pages:/pages    
-      - ./.next:/pages/.next  
-    ports:
-      - "3000:3000"
+      target: runner
     environment:
-      - NODE_ENV=production
-    command: ["node", ".next/standalone/server.js"]
+      NODE_ENV: production
+      HOSTNAME: "0.0.0.0"
+      PORT: 3000
+      DATABASE_URL: mysql://root:root@db:3306/appdb
+    ports:
+      - 3000:3000
+    networks:
+      - sameNetworkAsMysql
+    depends_on:
+      - db
+
+networks:
+  sameNetworkAsMysql:
+    driver: bridge
+
+volumes:
+  db-data:

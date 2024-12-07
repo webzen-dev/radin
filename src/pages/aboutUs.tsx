@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import Loader from "../components/loading";
+import LastProject from "../components/about-us/LastProjects";
 
 const Header = React.lazy(() => import("../components/Header"));
 const Footer = React.lazy(() => import("../components/Footer"));
@@ -36,7 +37,8 @@ const AboutUs = () => {
         <Mission />
         <Vision />
         <CoreValues />
-        <CompanyCollaborations />
+        {/* <CompanyCollaborations /> */}
+        <LastProject/>
         <Footer />
       </div>
     </Suspense>

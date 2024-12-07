@@ -12,6 +12,7 @@
 a.active {
   color: var(--wine);
 }
+
 :root {
   --black: #010101ff;
   --wine: #602730ff;
@@ -35,7 +36,167 @@ a.active {
   border-radius: 10px;
   transition: width 0.2s ease;
 }
+.product-detail {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  padding-top: 90px;
+}
+.product-detail header {
+  width: 100vw;
+  background: var(--wine);
+  padding-bottom: 10px;
+}
+.product-detail > * {
+  width: 50%;
+}
+.product-detail > .image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.product-detail > .image-box .larg-image {
+  max-width: 600px;
+  width: 100%;
+  max-height: 450px;
+  height: 450px;
+}
 
+.product-detail > .image-box img {
+  border-radius: 4px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  animation: changeImgae 400ms ease-in-out;
+}
+.product-detail > .image-box .small-images {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  max-width: 600px;
+  overflow-x: hidden;
+}
+.product-detail > .image-box .small-images img {
+  border-radius: 4px;
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+@keyframes changeImgae {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.product-detail .detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* align-items: center; */
+
+  padding: 20px;
+  /* justify-content: center; */
+}
+.product-detail .detail-box .name {
+  font-size: 2rem;
+  text-decoration: underline;
+  color: var(--wine);
+}
+.product-detail .detail-box .brand {
+  font-size: 1.2rem;
+}
+.product-detail .detail-box .update-time {
+  color: var(--wine);
+}
+.product-detail .detail-box .country {
+  color: #b9b9b9;
+}
+.product-detail .detail-box .btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-detail .detail-box .btns .request {
+  width: 300px;
+}
+.product-detail .detail-box .btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 35px;
+  border: none;
+  background: var(--wine);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.product-detail .detail-box .btns button.back {
+  background: var(--black);
+}
+.product-detail .detail-box .btns a {
+  width: 300px;
+}
+.product-detail .detail-box .btns button svg {
+  font-size: 1.5rem;
+}
+.product-detail .detail-box .share {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid gray;
+
+  /* max-width: 40%; */
+  padding-top: 20px;
+  gap: 10px;
+}
+.product-detail .detail-box .share a {
+  padding: 5px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .product-detail {
+    width: 100%;
+  }
+  .product-detail .detail-box .btns .request {
+    width: 50%;
+  }
+  .product-detail .detail-box .btns a {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .product-detail {
+    flex-direction: column;
+    width: 100%;
+  }
+  .product-detail > * {
+    gap: 30px;
+    width: 100%;
+  }
+  .product-detail > .image-box .larg-image {
+    height: auto;
+  }
+}
 #pwaInstallButton {
   width: 50%;
   max-width: 400px;
@@ -76,9 +237,14 @@ body {
 }
 header {
   display: flex;
+  left: 0;
+  right: 0;
   position: fixed;
   width: 100%;
+
   align-items: center;
+  top: 0;
+
   justify-content: space-between;
   padding: 0px 4rem;
   gap: 3vw;
@@ -584,10 +750,18 @@ header .search-box {
 .CompanyStats {
   width: 100%;
   padding: 20px;
-  text-align: center;
+  /* text-align: center;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed; */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-attachment: fixed;
+  color: aliceblue;
 }
 
 .CompanyStats .box {
@@ -1113,7 +1287,10 @@ footer .social-media a {
     padding: 15px 0;
     flex-direction: column;
   }
-
+  .CompanyStats {
+    /* background-size: auto; */
+    /* background-position: a; */
+  }
   .IndustryPride {
     text-align: center;
     padding: 10px;
@@ -1644,7 +1821,6 @@ footer .social-media a {
   background-size: cover;
   justify-content: center;
   background-repeat: no-repeat;
-  padding-left: 4rem;
   flex-direction: column;
 
   gap: 10px;
@@ -1749,7 +1925,7 @@ footer .social-media a {
 }
 .projects-page .project-list .project-item {
   padding: 10px;
-  width: 220px;
+  width: 280px;
   height: 270px;
   display: flex;
   border-radius: 4px;
@@ -1770,7 +1946,6 @@ footer .social-media a {
   padding-top: 10px;
 }
 .projects-page .project-list .project-item .brand {
-  padding: 0 20px;
   font-size: 0.9rem;
   color: rgb(128, 128, 128);
   display: flex;
@@ -1783,6 +1958,7 @@ footer .social-media a {
   border: none;
   height: 30px;
   background: #240000;
+  cursor: pointer;
   color: #f1f1f1;
   width: 100%;
   display: flex;
@@ -1827,6 +2003,21 @@ footer .social-media a {
   flex-direction: column;
 }
 @media screen and (max-width: 780px) {
+  .dashboard-content .list-project {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .dashboard-content .list-project .list-project-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .dashboard-content .list-project .list-project-box .project-item {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
   .ProjectsHeroSection .search-box {
     padding-top: 30px;
     flex-direction: column;
@@ -2182,6 +2373,68 @@ footer .social-media a {
   display: none;
   color: #fff;
 }
+
+.uploading-modal {
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+}
+.uploading-modal .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+.uploading-modal .box .title {
+  color: var(--cardinal);
+  width: 250px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* To ensure the ::after pseudo-element is positioned relative to the title */
+}
+
+.uploading-modal .box .title::after {
+  content: "Uploading project to server...";
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: uploading 2s infinite ease-in-out;
+}
+
+@keyframes uploading {
+  0% {
+    content: "Uploading project to server ";
+  }
+  20% {
+    content: "Uploading project to server .";
+  }
+  40% {
+    content: "Uploading project to server ..";
+  }
+  60% {
+    content: "Uploading project to server ...";
+  }
+  80% {
+    content: "Uploading project to server ....";
+  }
+  100% {
+    content: "Uploading project to server .....";
+  }
+}
+
 @media screen and (max-width: 860px) {
   .sidebar-menu {
     display: block;
@@ -2281,7 +2534,6 @@ footer .social-media a {
   place-content: center;
   background: rgb(255, 255, 255);
 }
-
 .loader {
   height: 300px;
   aspect-ratio: 1;
@@ -2501,14 +2753,12 @@ footer .social-media a {
   width: 100%;
   height: 25vh;
   display: flex;
-  flex-direction: row-reverse;
-  text-align: end;
+  /* flex-direction: row-reverse; */
   align-items: center;
   justify-content: space-around;
 }
 .core-value .box,
 .Vision .box {
-  width: 60%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -2517,7 +2767,7 @@ footer .social-media a {
 }
 .core-value .box .title,
 .Vision .box .title {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: #240000;
   text-decoration: underline;
 }
@@ -2537,7 +2787,7 @@ footer .social-media a {
   color: #240000;
   font-size: 1.2rem;
 }
-.company-collaborations {
+.last-projects {
   width: 80%;
   margin: 0 auto;
   height: 40vh;
@@ -2548,7 +2798,7 @@ footer .social-media a {
   align-items: center;
   overflow-x: hidden;
 }
-.company-collaborations .box {
+.last-projects .box {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -2557,20 +2807,46 @@ footer .social-media a {
   padding: 20px;
   max-width: 80%;
 }
-.company-collaborations .box .item {
+.last-projects .box .item {
   min-width: 300px;
   height: 150px;
-
+  position: relative;
   border: 1px solid rgba(128, 128, 128, 0.425);
   display: flex;
   border-radius: 4px;
   align-items: center;
   justify-content: center;
 }
-.company-collaborations .box .item img {
+.last-projects .box .item div {
+  z-index: 3;
+  color: white;
+
+
+}
+.last-projects .box .item img {
   width: 100%;
-  height: 90%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-radius: 4px;
+  position: absolute;
   object-fit: cover;
+}
+.last-projects .box .item::after {
+  position: absolute;
+  content: "";z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  border-radius: 4px;
 }
 @media screen and (max-width: 780px) {
   .aboutUs .Mission {
@@ -2702,12 +2978,16 @@ footer .social-media a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100vh;
+  z-index: 22;
+  background: rgba(0, 0, 0, 0.6);
 }
 .request-box > .box {
   width: 300px;
-  height: 300px;
-  background: rgba(0, 0, 0, 0.1);
+  /* height: 300px; */
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
@@ -2715,16 +2995,19 @@ footer .social-media a {
   border-radius: 4px;
   gap: 10px;
   animation: ConfirmModal 500ms ease-in-out;
+  padding: 10px;
 }
 .request-box .input-box input {
   width: 100%;
   height: 100%;
   border: none;
+  color: #fff;
+  outline: none;
   background: none;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid white;
 }
 .request-box .input-box input::placeholder {
-  color: black;
+  color: rgb(167, 167, 167);
   outline: none;
 }
 .request-box .input-box {
@@ -2734,10 +3017,20 @@ footer .social-media a {
 }
 .request-box .box .last-btn {
   background: none;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(167, 167, 167);
   color: rgb(255, 255, 255);
-  margin:5px 0;
-
+  margin: 5px 0;
+}
+.request-box .box button {
+  width: calc(50% - 10px);
+  height: 30px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.request-box .box button:not(.last-btn) {
+  background: var(--wine);
+  color: #fff;
+  border: none;
 }
 @keyframes ConfirmModal {
   from {

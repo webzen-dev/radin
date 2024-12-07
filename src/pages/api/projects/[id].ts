@@ -7,8 +7,13 @@ const prisma = new PrismaClient();
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query;
 
+  console.log('Received DELETE request for ID:', id);
+
+  if (!id || isNaN(Number(id))) {
+    return res.status(400).json({ error: 'Invalid or missing project ID' });
+  }
+
   if (req.method === 'GET') {
-    // Get single project by ID
     try {
       const project = await prisma.project.findUnique({
         where: { id: Number(id) },
@@ -20,17 +25,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.status(200).json(project);
     } catch (error) {
+      console.error("Error fetching project:", error); // لاگ خطا
       res.status(500).json({ error: 'Error fetching project' });
     }
   } else if (req.method === 'DELETE') {
-    // Delete project by ID
     try {
+      await prisma.image.deleteMany({
+        where: { projectId: Number(id) },
+      });
+
       const deletedProject = await prisma.project.delete({
         where: { id: Number(id) },
       });
 
+      console.log("Deleted project:", deletedProject); 
+
       res.status(200).json(deletedProject);
     } catch (error) {
+      console.error("Error deleting project:", error); // لاگ خطا
       res.status(500).json({ error: 'Error deleting project' });
     }
   } else {

@@ -17,7 +17,9 @@ const ProjectList = () => {
       {filteredProjects.length > 0 ? (
         filteredProjects.map((project) => (
           <div className="project-item" key={project.id}>
-            <Image src={project.image} alt={`Project: ${project.name}`} width={220} height={162} />
+            <Image 
+            src={project.images[0]?.src || "/default-image.jpg"}             
+            alt={`Project: ${project.name}`} width={220} height={162} />
             <div className="title">{project.name}</div>
             <div className="brand">
               <GiGearHammer />

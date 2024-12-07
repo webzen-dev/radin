@@ -25,9 +25,14 @@ const SearchItem = () => {
             <Image
               width={80}
               height={80}
-              src={project.image}
-              alt={project.name}
+              src={
+                typeof project.images?.[0] === "string"
+                  ? project.images[0]
+                  : "/de.png"
+              }
+              alt={project.name || "Project Image"}
             />
+
             <div className="box-item">
               <span>{project.name}</span>
               <button onClick={() => router.push(`/projects/${project.id}`)}>

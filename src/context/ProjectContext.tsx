@@ -1,13 +1,19 @@
 import axios from "axios";
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
+interface Image {
+  src: string;
+}
+
 interface Project {
   id: number;
   name: string;
   description: string;
   brand: string;
   category: string;
-  image: string;
+  country:string,
+  updatedAt:string,
+  images: Image[];
 }
 
 interface ProjectContextType {
@@ -40,7 +46,13 @@ export const ProjectProvider: React.FC<Props> = ({ children }) => {
         if (response.status !== 200) {
           throw new Error("Failed to fetch projects");
         }
-        setProjects(response.data);
+        const projectsWithImages = response.data.projects.map((project: any) => ({
+          ...project,
+          images: project.images.map((image: any) => ({
+            src: image.src, 
+          })),
+        }));
+        setProjects(projectsWithImages);
       } catch (err) {
         setError(err.message);
       } finally {
